@@ -14,8 +14,12 @@ describe User do
 		expect(user.cart[0][:price]).to eq(12)
 	end
 
-	# it 'should raise an error if adding a dish that doesn\'t exist' do
-	# 	user.add_to_cart(menu, 'banana', 12).to raise_error(RuntimeError, "dish not on the menu")
-	# end
+	it 'should raise an error if adding a dish that doesn\'t exist' do
+		expect( lambda {user.add_to_cart(menu, 'banana', 12)}).to raise_error(RuntimeError, "dish not on the menu")
+	end
+
+	it 'should raise an error if price does not match dish' do
+		expect( lambda {user.add_to_cart(menu, :pepperoni, 10)}).to raise_error(RuntimeError, "incorrect price")	
+	end
 
 end
