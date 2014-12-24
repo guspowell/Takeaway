@@ -1,0 +1,4 @@
+require './lib/menu.rb'
+require './lib/user.rb'
+menu = Menu.new
+user = User.new
