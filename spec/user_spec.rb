@@ -22,4 +22,16 @@ describe User do
 		expect( lambda {user.add_to_cart(menu, :pepperoni, 10)}).to raise_error(RuntimeError, "incorrect price")	
 	end
 
+	it 'should be able to calculate total price of cart' do
+		user.add_to_cart(menu, :pepperoni, 12)
+		user.add_to_cart(menu, :hawaii, 11)
+		expect(user.calc).to eq 23
+	end
+
+	it 'should raise an error if price given does not eq total price' do
+		user.add_to_cart(menu, :pepperoni, 12)
+		user.add_to_cart(menu, :hawaii, 11)
+		expect( lambda {user.checkout(price)}).to raise_error(RuntimeError, "incorrect total price")
+	end
+
 end

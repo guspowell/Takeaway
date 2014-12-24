@@ -9,6 +9,6 @@ class Menu
 			bbq_chicken: 11,
 			margaritta: 9
 		}	
-	end	
+	end
 
 	end
