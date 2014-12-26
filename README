@@ -7,8 +7,19 @@ Placing the order by giving the list of dishes, their quantities and a number th
 
 CLASSES
 
-menu
-order => list of dishes, quantities, sum
+menu                        |  collaborators
+==========================================================
+list of pizzas and prices   | 
+
+
+user                        |  collaborators
+==========================================================
+read the menu               | 
+order a number of dishes    |
+give sum of the prices      |
+receive text                |
+
+
 
 
 
