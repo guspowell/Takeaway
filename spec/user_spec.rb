@@ -41,4 +41,8 @@ describe User do
 		expect(user.checkout(23)).to eq("Thank you! Your order was placed and will be delivered before #{time.hour}:#{time.min}")
 	end
 
+	it 'should send a text to the user when checking out' do
+
+	end
+
 end

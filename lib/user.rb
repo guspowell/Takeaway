@@ -1,3 +1,6 @@
+require 'rubygems'
+require 'twilio-ruby'
+
 class User
 
 	attr_accessor :cart
@@ -23,7 +26,13 @@ class User
 	def checkout(price)
 		raise "incorrect total price" unless price == calc
 		time = Time.new
-		else "Thank you! Your order was placed and will be delivered before #{time.hour}:#{time.min}"
+		account_sid = 'ACa0d34f1fdc4a0a60f6fbb4bceab79a68'
+		auth_token = '5927c969a38b60b667439fd622a05c94'
+		@client = Twilio::REST::Client.new account_sid, auth_token
+		message = @client.account.messages.create(:body => "Thank you! Your order was placed and will be delivered before #{time.hour}:#{time.min}",
+																							:to => "+447887886622",
+																							:from => "+441663362053")
+		puts message.sid
 	end
 
 end
