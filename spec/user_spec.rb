@@ -31,7 +31,14 @@ describe User do
 	it 'should raise an error if price given does not eq total price' do
 		user.add_to_cart(menu, :pepperoni, 12)
 		user.add_to_cart(menu, :hawaii, 11)
-		expect( lambda {user.checkout(price)}).to raise_error(RuntimeError, "incorrect total price")
+		expect( lambda {user.checkout(10)}).to raise_error(RuntimeError, "incorrect total price")
+	end
+
+	it 'should output a message with time of deliveryif the sum is correct' do
+		user.add_to_cart(menu, :pepperoni, 12)
+		user.add_to_cart(menu, :hawaii, 11)
+		time = Time.new
+		expect(user.checkout(23)).to eq("Thank you! Your order was placed and will be delivered before #{time.hour}:#{time.min}")
 	end
 
 end

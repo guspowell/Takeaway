@@ -22,6 +22,8 @@ class User
 
 	def checkout(price)
 		raise "incorrect total price" unless price == calc
+		time = Time.new
+		else "Thank you! Your order was placed and will be delivered before #{time.hour}:#{time.min}"
 	end
 
 end
