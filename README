@@ -8,16 +8,16 @@ Placing the order by giving the list of dishes, their quantities and a number th
 CLASSES
 
 menu                        |  collaborators
-==========================================================
-list of pizzas and prices   | 
+----------------------------------------------------------
+list of dishes and prices   | 
 
 
 user                        |  collaborators
 ==========================================================
-read the menu               | 
-order a number of dishes    |
-give sum of the prices      |
-receive text                |
+read the menu               | user, menu
+add dish to cart            | user
+checkout                    | user
+receive text                | user
 
 
 
