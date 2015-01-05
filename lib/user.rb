@@ -7,9 +7,12 @@ class User
 
 	def initialize
 		@cart = []
+		account_sid = 'ACa0d34f1fdc4a0a60f6fbb4bceab79a68'
+		auth_token = '5927c969a38b60b667439fd622a05c94'
+		@client = Twilio::REST::Client.new account_sid, auth_token
 	end
 
-	def read (menu)
+	def read_menu (menu)
 		menu.dishes.each { |dish,price| puts "#{dish} : £#{price}" }
 	end
 
@@ -23,7 +26,7 @@ class User
 
 	def read_cart
 		@cart.each do |order|
-			puts "#{order[:dish].to_s} : #{order[:price]}"
+			puts "#{order[:dish].to_s} : £#{order[:price]}"
 		end
 	end
 
@@ -33,9 +36,6 @@ class User
 
 	def send_text
 		@time = Time.new
-		account_sid = 'ACa0d34f1fdc4a0a60f6fbb4bceab79a68'
-		auth_token = '5927c969a38b60b667439fd622a05c94'
-		@client = Twilio::REST::Client.new account_sid, auth_token
 		message = @client.account.messages.create(:body => "Thank you! Your order was placed and will be delivered before #{@time.hour + 1}:#{@time.min}. Total cost: £#{calc}",
 																							:to => "+447887886622",
 																							:from => "+441663362053")
