@@ -24,7 +24,8 @@ describe Cart do
 	it 'should output a message with time of delivery if the sum is correct' do
 		add_two_pizzas
 		time = Time.new
-		expect(cart.checkout(user)).to eq("Thank you! Your order was placed and will be delivered before #{time.hour + 1}:#{time.min}")
+		expect(cart.checkout).to eq("Thank you! Your order was placed and will be delivered before #{time.hour + 1}:#{time.min}")
 	end
+
 	
 end
