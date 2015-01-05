@@ -4,10 +4,6 @@ describe Menu do
 
 	let (:menu) {Menu.new}
 
-	it 'should have a list of all items and prices' do
-
-	end
-
 	it 'should be able to add dishes to the menu' do
 		menu.add_dish('capricciosa', 12)
 		expect(menu.dishes.has_key?(:capricciosa)).to eq true

@@ -1,4 +1,6 @@
 require './lib/menu.rb'
 require './lib/user.rb'
+require './lib/cart.rb'
 menu = Menu.new
 user = User.new
+cart = Cart.new
