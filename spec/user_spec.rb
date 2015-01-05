@@ -5,6 +5,11 @@ describe User do
 	let(:user) {User.new}
 	let(:menu) {Menu.new}
 
+	def add_two_pizzas
+		user.add_to_cart(menu, :pepperoni, 12)
+		user.add_to_cart(menu, :hawaii, 11)
+	end
+
 	it 'should be able to read the menu' do
 	end
 
@@ -23,14 +28,12 @@ describe User do
 	end
 
 	it 'should be able to calculate total price of cart' do
-		user.add_to_cart(menu, :pepperoni, 12)
-		user.add_to_cart(menu, :hawaii, 11)
+		add_two_pizzas
 		expect(user.calc).to eq 23
 	end
 
 	it 'should raise an error if price given does not eq total price' do
-		user.add_to_cart(menu, :pepperoni, 12)
-		user.add_to_cart(menu, :hawaii, 11)
+		add_two_pizzas
 		expect( lambda {user.checkout(10)}).to raise_error(RuntimeError, "incorrect total price")
 	end
 
@@ -41,14 +44,9 @@ describe User do
 	end
 
 	it 'should output a message with time of delivery if the sum is correct' do
-		user.add_to_cart(menu, :pepperoni, 12)
-		user.add_to_cart(menu, :hawaii, 11)
+		add_two_pizzas
 		time = Time.new
-		expect(user.checkout(23)).to eq("Thank you! Your order was placed and will be delivered before #{time.hour}:#{time.min}")
+		expect(user.checkout(23)).to eq("Thank you! Your order was placed and will be delivered before #{time.hour + 1}:#{time.min}")
 	end
-
-	# it 'should send a text to the user when checking out' do
-
-	# end
 
 end
