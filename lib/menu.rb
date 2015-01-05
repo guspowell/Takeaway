@@ -7,7 +7,7 @@ class Menu
 			pepperoni: 12,
 			hawaii: 11,
 			bbq_chicken: 11,
-			margaritta: 9
+			margherita: 9
 		}	
 	end
 

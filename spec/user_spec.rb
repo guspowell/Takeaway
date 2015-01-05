@@ -34,7 +34,13 @@ describe User do
 		expect( lambda {user.checkout(10)}).to raise_error(RuntimeError, "incorrect total price")
 	end
 
-	it 'should output a message with time of deliveryif the sum is correct' do
+	it 'should be able to read the cart' do
+		user.add_to_cart(menu, :pepperoni, 12)
+		# user.add_to_cart(menu, :hawaii, 11)
+		expect(user.read_cart).to eq('pepperoni : 12')
+	end
+
+	it 'should output a message with time of delivery if the sum is correct' do
 		user.add_to_cart(menu, :pepperoni, 12)
 		user.add_to_cart(menu, :hawaii, 11)
 		time = Time.new
