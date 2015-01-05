@@ -6,7 +6,6 @@ describe User do
 	let(:menu) {Menu.new}
 	let(:cart) {Cart.new}
 
-	# put allow and receive on client
 
 	def add_two_pizzas
 		user.add_to_cart(cart, menu, :pepperoni, 12)
@@ -24,9 +23,6 @@ describe User do
 
 	it 'should raise an error if price does not match dish' do
 		expect( lambda {user.add_to_cart(cart, menu, :pepperoni, 10)}).to raise_error(RuntimeError, "incorrect price")	
-	end
-
-	it 'should be able to send a text to the user' do
 	end
 
 	it 'should raise an error if price given does not eq total price upon placing order' do

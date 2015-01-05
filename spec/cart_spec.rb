@@ -2,6 +2,9 @@ require 'cart'
 
 describe Cart do
 
+	# allow(@client).to receive(account.messages.create).and_return (true)
+
+
 	let(:user) {User.new}
 	let(:menu) {Menu.new}
 	let(:cart) {Cart.new}

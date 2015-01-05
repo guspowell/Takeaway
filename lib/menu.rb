@@ -22,5 +22,3 @@ class Menu
 	end
 
 	end
-	
-	# make dish class
