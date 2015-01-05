@@ -8,12 +8,12 @@ Placing the order by giving the list of dishes, their quantities and a number th
 CLASSES
 
 menu                        |  collaborators
-----------------------------------------------------------
+----------------------------|----------------------------
 list of dishes and prices   | 
 
 
 user                        |  collaborators
-==========================================================
+----------------------------|----------------------------
 read the menu               | user, menu
 add dish to cart            | user
 checkout                    | user
