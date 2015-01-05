@@ -39,13 +39,4 @@ class User
 		"\n Thank you! Your order was placed and will be delivered before #{@time.hour}:#{@time.min}.\n=================\nTotal cost £#{calc}"
 	end
 
-	# def order_list
-	# 	message = ""
-	# 	cart.each do |pizza|
-	# 		message << "#{pizza[:dish]}....... £#{pizza[:price]}"
-	# 	end
-	# 	message
-	# end
-
-
 end
