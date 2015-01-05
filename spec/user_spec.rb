@@ -5,20 +5,11 @@ describe User do
 	let(:user) {User.new}
 	let(:menu) {Menu.new}
 
+	# put allow and receive on client
+
 	def add_two_pizzas
 		user.add_to_cart(menu, :pepperoni, 12)
 		user.add_to_cart(menu, :hawaii, 11)
-	end
-
-	def read_menu
-		"pepperoni: 12"
-		"hawaii: 11"
-		"bbq_chicken: 11"
-		"margherita: 9"
-	end
-
-	it 'should be able to read the menu' do
-		expect(user.read_menu(menu)).to eq read_menu
 	end
 
 	it 'should be able to add an item to the cart' do
@@ -38,12 +29,6 @@ describe User do
 	it 'should be able to calculate total price of cart' do
 		add_two_pizzas
 		expect(user.calc).to eq 23
-	end
-
-	it 'should be able to read the cart' do
-		user.add_to_cart(menu, :pepperoni, 12)
-		# user.add_to_cart(menu, :hawaii, 11)
-		expect(user.read_cart).to eq('pepperoni : 12')
 	end
 
 	it 'should be able to send a text to the user' do

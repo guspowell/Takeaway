@@ -12,22 +12,10 @@ class User
 		@client = Twilio::REST::Client.new account_sid, auth_token
 	end
 
-	def read_menu (menu)
-		menu.dishes.each { |dish,price| puts "#{dish} : £#{price}" }
-	end
-
 	def add_to_cart (menu, dish, price)
 		raise "dish not on the menu" unless menu.dishes.has_key?(dish.to_sym)
 		raise "incorrect price" unless menu.dishes[dish.to_sym] == price
 		@cart << {dish: dish.to_sym, price: price}
-	end
-
-# cart = [{:dish=>:pepperoni, :price=>12}, {:dish=>:hawaii, :price=>11}] 
-
-	def read_cart
-		@cart.each do |order|
-			puts "#{order[:dish].to_s} : £#{order[:price]}"
-		end
 	end
 
 	def calc
@@ -36,7 +24,7 @@ class User
 
 	def send_text
 		@time = Time.new
-		message = @client.account.messages.create(:body => "Thank you! Your order was placed and will be delivered before #{@time.hour + 1}:#{@time.min}. Total cost: £#{calc}",
+		message = @client.account.messages.create(:body => text,
 																							:to => "+447887886622",
 																							:from => "+441663362053")
 	end
@@ -47,17 +35,17 @@ class User
 		"Thank you! Your order was placed and will be delivered before #{@time.hour + 1}:#{@time.min}"
 	end
 
-		# def order_list
-	# 	@cart.each do |pizza|
-	# 		puts "#{pizza[:dish]}....... £#{pizza[:price]}"
+	def text
+		"\n Thank you! Your order was placed and will be delivered before #{@time.hour}:#{@time.min}.\n=================\nTotal cost £#{calc}"
+	end
+
+	# def order_list
+	# 	message = ""
+	# 	cart.each do |pizza|
+	# 		message << "#{pizza[:dish]}....... £#{pizza[:price]}"
 	# 	end
+	# 	message
 	# end
 
-	# def text
-	# 	puts "Thank you! Your order was placed and will be delivered before #{time.hour}:#{time.min}."
-	# 	order_list
-	# 	puts "================="
-	# 	puts "Total cost £#{calc}"
-	# end
 
 end
